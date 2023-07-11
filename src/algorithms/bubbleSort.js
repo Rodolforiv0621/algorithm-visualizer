@@ -24,13 +24,10 @@ export async function bubbleSort(arr, update) {
       document.getElementById(j + 1).style.backgroundColor = "green";
     }
     if (!swapped) {
-      for (let k = 0; k < arr.length; k++) {
-        document.getElementById(k).style.backgroundColor = "green";
-        await delay(30);
-      }
       break;
     }
   }
+  setGreen(arr.length)
 }
 function delay(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -41,4 +38,11 @@ function swap(index1, index2) {
   var height2 = document.getElementById(index2).offsetHeight;
   document.getElementById(index1).style.height = height2 + "px";
   document.getElementById(index2).style.height = height + "px";
+}
+
+async function setGreen(length){
+  for (let k = 0; k < length; k++) {
+    document.getElementById(k).style.backgroundColor = "green";
+    await delay(30);
+  }
 }

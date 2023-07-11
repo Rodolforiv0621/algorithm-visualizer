@@ -2,11 +2,13 @@ import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { bubbleSort } from "./algorithms/bubbleSort";
 import { insertionSort } from "./algorithms/insertionSort";
+import { quickSort } from "./algorithms/quickSort";
 
 function SortingPage() {
   const navigate = useNavigate();
   const [lines, setLines] = useState([]);
   const [count, setCount] = useState(0);
+  const [ready, setReady] = useState(true);
   function updateCount() {
     setCount((prevCount) => prevCount + 1);
   }
@@ -40,17 +42,27 @@ function SortingPage() {
       return 3;
     }
   }
-  function bubble() {
+  async function bubble() {
+    if(!ready) return;
     setCount(0);
-    bubbleSort(lines, updateCount);
+    setReady(false);
+    await bubbleSort(lines, updateCount);
+    setReady(true)
   }
   async function insertion() {
+    if (!ready) return;
     setCount(0);
-    console.log(lines);
+    setReady(false);
     await insertionSort(lines, updateCount);
-    console.log(lines);
+    setReady(true);
   }
 
+  async function quick(){
+    setCount(0);
+    console.log(lines);
+    await quickSort(lines, 0, lines.length-1)
+    console.log(lines);
+  }
   return (
     <>
       <div className="container">
@@ -83,7 +95,9 @@ function SortingPage() {
           Bubble Sort
         </button>
         <button onClick={insertion}>Insertion Sort</button>
+        <button onClick={quick}>Quick Sort</button>
         <button onClick={resetArray}>Generate Random Array</button>
+        
         <div className="data">
           <div className="count"># of Swaps: {count}</div>
         </div>

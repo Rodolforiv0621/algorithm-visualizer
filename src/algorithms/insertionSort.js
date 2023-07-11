@@ -7,7 +7,7 @@ export async function insertionSort(arr, update) {
     await delay(200);
     document.getElementById(j + 1).style.backgroundColor = "";
     while (j >= 0 && arr[j] > current) {
-      document.getElementById(j).style.backgroundColor = "grey";
+      document.getElementById(j).style.backgroundColor = "red";
       await delay(100);
       document.getElementById(j).style.backgroundColor = "";
       move(j, j + 1);
@@ -23,10 +23,7 @@ export async function insertionSort(arr, update) {
 
     arr[j + 1] = current;
   }
-  for (let k = 0; k < arr.length; k++) {
-    document.getElementById(k).style.backgroundColor = "green";
-    await delay(30);
-  }
+  setGreen(arr.length)
 }
 
 function delay(ms) {
@@ -36,4 +33,11 @@ function delay(ms) {
 function move(index1, index2) {
   var height = document.getElementById(index1).offsetHeight;
   document.getElementById(index2).style.height = height + "px";
+}
+
+async function setGreen(length) {
+  for (let k = 0; k < length; k++) {
+    document.getElementById(k).style.backgroundColor = "green";
+    await delay(30);
+  }
 }
