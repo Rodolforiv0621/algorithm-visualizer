@@ -58,10 +58,11 @@ function SortingPage() {
   }
 
   async function quick(){
+    if(!ready) return;
     setCount(0);
-    console.log(lines);
-    await quickSort(lines, 0, lines.length-1)
-    console.log(lines);
+    setReady(false)
+    await quickSort(lines, 0, lines.length-1, updateCount)
+    setReady(true)
   }
   return (
     <>
