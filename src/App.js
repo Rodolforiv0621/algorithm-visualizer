@@ -12,7 +12,7 @@ function App() {
         </a>
         <nav className="navbar">
           <a onClick={() => navigate("/sorting")}>Sorting Algorithms</a>
-          <a onClick={() => navigate("/pathfinding")}>Pathfinding Algorithms</a>
+          
           {/* <a href="#">Hello3</a> */}
         </nav>
       </header>
