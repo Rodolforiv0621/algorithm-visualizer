@@ -73,9 +73,6 @@ function SortingPage() {
           </a>
           <nav className="navbar">
             <a onClick={() => navigate("/sorting")}>Sorting Algorithms</a>
-            <a onClick={() => navigate("/pathfinding")}>
-              Pathfinding Algorithms
-            </a>
           </nav>
         </header>
 
